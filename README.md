@@ -1,9 +1,5 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
 In the project directory, you can run:
 
 ### `npm start`
@@ -12,16 +8,18 @@ Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### create a new repository on the command line
 
-git init
-git add .
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/premil/test.git
-git push -u origin main
+### `create a new repository on the command line`
+
+1) git init
+2) git add .
+3) git commit -m "first commit"
+4) git branch -M main
+5) git remote add origin https://github.com/premil/test.git
+6) git push -u origin main
+
+
 
 
 Launches the test runner in the interactive watch mode.\
