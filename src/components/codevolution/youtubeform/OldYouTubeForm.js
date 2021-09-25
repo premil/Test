@@ -81,9 +81,8 @@ function OldYouTubeForm() {
                         type='email'
                         id='email'
                         name='email'
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.email}
+                        {...formik.getFieldProps('email')} //Single linecode of replace ==> both parameters onChange={formik.handleChange} value={formik.values.name} onBlur={formik.handleBlur}
+
                     />
                     {formik.touched.email && formik.errors.email
                         ? <div className="error">{formik.errors.email}</div>
@@ -96,9 +95,8 @@ function OldYouTubeForm() {
                         type='text'
                         id='channel'
                         name='channel'
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.channel}
+                        {...formik.getFieldProps('channel')} //Single linecode of replace ==> both parameters onChange={formik.handleChange} value={formik.values.name} onBlur={formik.handleBlur}
+
                     />
                     {formik.touched.channel && formik.errors.channel
                         ? <div className="error">{formik.errors.channel}</div>
@@ -111,4 +109,4 @@ function OldYouTubeForm() {
     )
 }
 
-export default OldYouTubeForm
+export default OldYouTubeForm;
