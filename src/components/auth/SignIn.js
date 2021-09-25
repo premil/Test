@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import '../../styles/login.css';
-import { Button } from '../button/Button';
+import { Button } from 'react-bootstrap';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import FormikControl from '../Formik/FormikControl';

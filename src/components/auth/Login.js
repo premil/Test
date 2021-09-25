@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import '../../styles/login.css';
-import { Button } from '../button/Button';
+import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from "react-redux";
 import {  Redirect, Link } from 'react-router-dom';
 import { login } from '../../redux/actions/authAction';

@@ -1,11 +1,14 @@
 import React from 'react'
-import { Formik, Form } from 'formik'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup';         // 3rd party validation library
+import TextError from '../../Formik/TextError';
 
 const initialValues = {
     name: '',
     email: '',
-    channel: ''
+    channel: '',
+    comments: '',
+    address: '',
 }
 
 const validationSchema = Yup.object({       // form validation for using Yup library
@@ -33,51 +36,72 @@ function YouTubeForm() {
     return (
         /*  Formik components use (replace to useFormik hook) */
         <Formik
-            initialValues={initialValues}
-            validationSchema={validationSchema}
-            onSubmit={onSubmit}
-            className="form-control">
+            initialValues={initialValues}           // accept initialvalues as props
+            validationSchema={validationSchema}     // accept validationSchema as props
+            onSubmit={onSubmit}                     // accept onSubmit as props
+        >
 
             {/* Form components ==> helps automatically link in onSubmith methoods to a Form submit event*/}
             {/* Form components use  ==> replace "<form onSubmit={formik.handleSubmit}> " */}
             <Form>
                 <div className="form-control">
                     <label htmlFor='name'>Name</label>
-                    <input
+                    {/* Field components ==> replace "<input>" */}
+                    {/* Remove ==> "{...formik.getFieldProps('name')}*/}
+                    <Field
                         type='text'
                         id='name'
                         name='name'
-                        {...formik.getFieldProps('name')} //Single linecode of replace ==> both parameters onChange={formik.handleChange} value={formik.values.name} onBlur={formik.handleBlur}
                     />
-                    {formik.touched.name && formik.errors.name
-                        ? <div className="error">{formik.errors.name}</div>
-                        : null}
+                    {/*ErrorMessage component replace ==> "{formik.touched.name && formik.errors.name
+                                ? <div className="error">{formik.errors.name}</div> 
+                                : null}"" */}
+                    <ErrorMessage name="name" component={TextError}/>
                 </div>
 
                 <div className="form-control">
                     <label htmlFor='email'>E-mail</label>
-                    <input
+                    {/* Field components ==> replace "<input>" */}
+                    {/* Remove ==> "{...formik.getFieldProps('email')}*/}
+                    <Field
                         type='email'
                         id='email'
                         name='email'
-                        {...formik.getFieldProps('email')}   //onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.email}
                     />
-                    {formik.touched.email && formik.errors.email
-                        ? <div className="error">{formik.errors.email}</div>
-                        : null}
+                    {/*ErrorMessage component replace ==> "{formik.touched.email && formik.errors.email
+                                ? <div className="error">{formik.errors.email}</div>
+                                : null}" */}
+                    <ErrorMessage name="email" component={TextError} />
                 </div>
 
                 <div className="form-control">
                     <label htmlFor='channel'>Channel</label>
-                    <input
-                        type='text'
-                        id='channel'
-                        name='channel'
-                        {...formik.getFieldProps('channel')}   //onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.channel}
-                    />
-                    {formik.touched.channel && formik.errors.channel
-                        ? <div className="error">{formik.errors.channel}</div>
-                        : null}
+                    <Field type='text' id='channel' name='channel' />
+                    <ErrorMessage name="channel" component={TextError} />
+                </div>
+
+                <div className="form-control">
+                    <label htmlFor='comments'>Comments</label>
+                    <Field as='textarea' id='comments' name='comments' />
+                </div>
+
+                <div className="form-control">
+                    <label htmlFor='address'>Address</label>
+                    <Field name='address'>
+                        {/* implimentation of Field component with render props pattern  */}
+                        {(props) => {
+                            const { field, form, meta } = props     // Default 3 Render props have
+                            console.log("Render Props =>", props)
+                            return (
+                                <div>
+                                    <input type='text' id='address' {...field} />
+                                    {meta.touched && meta.error         // error message
+                                        ? <div> {meta.error}</div>
+                                        : null}
+                                </div>
+                            )
+                        }}
+                    </Field>
                 </div>
 
                 <button type='submit'>Submit</button>

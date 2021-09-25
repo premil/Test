@@ -8,7 +8,7 @@ const initialValues = {
     channel: ''
 }
 
-const validate = values => {                // form validation for default library
+/* const validate = values => {                 // form validation for default library
     const errors = {}
 
     if (!values.name) {             // values.name
@@ -26,9 +26,9 @@ const validate = values => {                // form validation for default libra
     }
 
     return errors
-}
+} */
 
-const validationSchema = Yup.object({       // form validation for using Yup library
+const validationSchema = Yup.object({           // form validation for using Yup library
     name: Yup
         .string()
         .required('* Required!'),
@@ -66,6 +66,7 @@ function OldYouTubeForm() {
                         type='text'
                         id='name'
                         name='name'
+                        /*  {...formik.getFieldProps('name')} code replace to below 3 line codes */
                         onChange={formik.handleChange}
                         value={formik.values.name}
                         onBlur={formik.handleBlur}      // onBlur is using User Visited field ==> true
@@ -81,7 +82,7 @@ function OldYouTubeForm() {
                         type='email'
                         id='email'
                         name='email'
-                        {...formik.getFieldProps('email')} //Single linecode of replace ==> both parameters onChange={formik.handleChange} value={formik.values.name} onBlur={formik.handleBlur}
+                        {...formik.getFieldProps('email')} //Single linecode of replace ==> onChange={formik.handleChange} value={formik.values.name} onBlur={formik.handleBlur}
 
                     />
                     {formik.touched.email && formik.errors.email
@@ -95,7 +96,7 @@ function OldYouTubeForm() {
                         type='text'
                         id='channel'
                         name='channel'
-                        {...formik.getFieldProps('channel')} //Single linecode of replace ==> both parameters onChange={formik.handleChange} value={formik.values.name} onBlur={formik.handleBlur}
+                        {...formik.getFieldProps('channel')} //Single linecode of replace ==> onChange={formik.handleChange} value={formik.values.name} onBlur={formik.handleBlur}
 
                     />
                     {formik.touched.channel && formik.errors.channel
