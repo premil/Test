@@ -3,7 +3,7 @@ import '../../styles/login.css';
 import { Button } from 'react-bootstrap';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import FormikControl from '../Formik/FormikControl';
+import FormikControl from '../formik/FormikControl';
 import FormExample from './Register';
 import SignUP from './SignUp';
 import SignUPValidation from './SignUPValidation';

@@ -9,7 +9,7 @@ function Input(props) {
         <div className="col1">
             <label htmlFor={name}> {label} </label>
             <Field className='user-input' id={name} name={name} {...rest} />
-            <ErrorMessage  name={name} />
+            <ErrorMessage  name={name} component={TextError} />
         </div>
     )
 }

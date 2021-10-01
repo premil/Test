@@ -1,7 +1,7 @@
 import React, { Component, useEffect, useRef } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import  FormikControl  from '../Formik/FormikControl';
+import  FormikControl  from '../formik/FormikControl';
 //import SetOfFields from "./SetOfFields";
 
 const SignUPValidation = (props) => {
